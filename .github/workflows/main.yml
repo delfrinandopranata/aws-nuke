@@ -1,0 +1,28 @@
+# GitHub workflow running at specific times for Singapore and Virginia
+name: Run aws-nuke
+on:
+  schedule:
+    - cron: '0 15 * * *' # 11 PM SGT (3 PM UTC)
+
+jobs:
+  aws_nuke:
+    runs-on: ubuntu-latest
+    container:
+      image: delfrinando/aws-nuke:latest
+      options: --user root
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Verify aws-nuke installation
+      run: /usr/local/bin/aws-nuke --version
+    - name: Run aws-nuke for California
+      run: |
+        /usr/local/bin/aws-nuke run --config ${GITHUB_WORKSPACE}/nuke/config/config.yaml --force --no-dry-run --force-sleep 3 || {
+          echo "aws-nuke failed. Exiting with error."
+          exit 1
+        }
