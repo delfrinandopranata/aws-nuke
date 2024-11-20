@@ -68,25 +68,25 @@ jobs:
           exit 1
         }
 
-  aws_nuke_va:
-    runs-on: ubuntu-latest
-    container:
-      image: delfrinando/aws-nuke:latest
-      options: --user root
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-    - name: Verify aws-nuke installation
-      run: /usr/local/bin/aws-nuke --version
-    - name: Run aws-nuke for California
-      run: |
-        /usr/local/bin/aws-nuke run --config ${GITHUB_WORKSPACE}/nuke/config/config.yaml --force --no-dry-run --force-sleep 3 || {
-          echo "aws-nuke failed. Exiting with error."
-          exit 1
-        }
+  # aws_nuke_va:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: delfrinando/aws-nuke:latest
+  #     options: --user root
+  #   steps:
+  #   - name: Checkout repo
+  #     uses: actions/checkout@v2
+  #   - name: Configure AWS Credentials
+  #     uses: aws-actions/configure-aws-credentials@v1
+  #     with:
+  #       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #       aws-region: us-east-1
+  #   - name: Verify aws-nuke installation
+  #     run: /usr/local/bin/aws-nuke --version
+  #   - name: Run aws-nuke for California
+  #     run: |
+  #       /usr/local/bin/aws-nuke run --config ${GITHUB_WORKSPACE}/nuke/config/config.yaml --force --no-dry-run --force-sleep 3 || {
+  #         echo "aws-nuke failed. Exiting with error."
+  #         exit 1
+  #       }
