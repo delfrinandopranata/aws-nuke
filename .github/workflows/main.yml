@@ -1,11 +1,11 @@
 # GitHub workflow running at specific times for Singapore and Virginia
 name: Run aws-nuke
-on:
-  schedule:
-    - cron: '0 15 * * *' # 11 PM SGT (3 PM UTC)
-    - cron: '0 22 * * *' # 6 AM SGT (10 PM UTC)
-  push:
-    branches:  [ main, "*"]
+# on:
+  # schedule:
+  #   - cron: '0 15 * * *' # 11 PM SGT (3 PM UTC)
+  #   - cron: '0 22 * * *' # 6 AM SGT (10 PM UTC)
+  # push:
+  #   branches:  [ main, "*"]
 
 jobs:
   # aws_nuke_sg:
