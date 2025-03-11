@@ -59,15 +59,15 @@ resource-types:
     - S3Bucket
     - S3MultipartUpload
     - S3Object
-    - EC2VPC                 # Exclude VPCs
-    - EC2Subnet
-    - EC2VPCEndpoint
-    - EC2RouteTable
+    # - EC2VPC                 # Exclude VPCs
+    # - EC2Subnet
+    # - EC2VPCEndpoint
+    # - EC2RouteTable
     - EC2DefaultSecurityGroupRule
-    - EC2SecurityGroup       # Exclude security groups
-    - EC2KeyPair             # Exclude key pairs
-    - AWSBackupRecoveryPoint
-    - WAFv2WebACL
+    # - EC2SecurityGroup       # Exclude security groups
+    # - EC2KeyPair             # Exclude key pairs
+    # - AWSBackupRecoveryPoint
+    # - WAFv2WebACL
     - CognitoUserPool
     - EC2DHCPOption
     - EC2InternetGateway
