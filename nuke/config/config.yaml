@@ -1,27 +1,13 @@
 regions:
   - ap-southeast-1
-  - us-east-1       # US East (Virginia)
-  # - us-east-2       # US East (Ohio)
-  # - us-west-1       # US West (N. California)
-  # - us-west-2       # US West (Oregon)
-  # - ap-south-1      # Asia Pacific (Mumbai)
-  # - ap-northeast-3  # Asia Pacific (Osaka)
-  # - ap-northeast-2  # Asia Pacific (Seoul)
-  - ap-southeast-2  # Asia Pacific (Sydney)
-  # - ap-northeast-1  # Asia Pacific (Tokyo)
-  # - ca-central-1    # Canada (Central)
-  # - eu-central-1    # Europe (Frankfurt)
-  # - eu-west-1       # Europe (Ireland)
-  # - eu-west-2       # Europe (London)
-  # - eu-west-3       # Europe (Paris)
-  # - eu-north-1      # Europe (Stockholm)
-  # - sa-east-1       # South America (São Paulo)
+  - us-east-1
+  - ap-southeast-2
 
 blocklist:
   - "999999999999"  # production
 
 accounts:
-  "255945442255": {} # aws-nuke-example
+  "255945442255": {}
 
 resource-types:
   excludes:
@@ -59,15 +45,18 @@ resource-types:
     - S3Bucket
     - S3MultipartUpload
     - S3Object
-    - EC2VPC                 # Exclude VPCs
+    - EC2VPC
     - EC2Subnet
     - EC2VPCEndpoint
     - EC2RouteTable
     - EC2DefaultSecurityGroupRule
-    - EC2SecurityGroup       # Exclude security groups
-    # - EC2KeyPair             # Exclude key pairs
-    # - AWSBackupRecoveryPoint
-    # - WAFv2WebACL
+    - EC2SecurityGroup
     - CognitoUserPool
     - EC2DHCPOption
     - EC2InternetGateway
+
+filters:
+  ".*":
+    - property: Name
+      type: regex
+      value: "^ce-grp-.*"
