@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 15 * * *' # 11 PM SGT (3 PM UTC)
     - cron: '0 22 * * *' # 6 AM SGT (10 PM UTC)
+    - cron: '0 6 * * *'  # 2 PM SGT (6 AM UTC)
   push:
     branches:  [ main, "*"]
 
