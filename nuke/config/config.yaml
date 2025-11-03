@@ -41,3 +41,22 @@ resource-types:
     - Route53ResolverRule
     - Route53ResourceRecordSet
     - Route53TrafficPolicy
+    - S3AccessPoint
+    - S3Bucket
+    - S3MultipartUpload
+    - S3Object
+    - EC2VPC
+    - EC2Subnet
+    - EC2VPCEndpoint
+    - EC2RouteTable
+    - EC2DefaultSecurityGroupRule
+    - EC2SecurityGroup
+    - CognitoUserPool
+    - EC2DHCPOption
+    - EC2InternetGateway
+
+filters:
+  ".*":
+    - property: Name
+      type: regex
+      value: "^ce-grp-.*"
