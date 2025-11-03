@@ -59,4 +59,4 @@ filters:
   ".*":
     - property: Name
       type: regex
-      value: "^ce-grp-.*"
+      value: "^(ce-grp-.*|.*sctp-ce11.*)$"
